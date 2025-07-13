@@ -252,6 +252,16 @@ iframe {
     cursor: default;
 }
 
+ul {
+  padding-left: 0;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+}
+ul li {
+  display: block;
+  margin-bottom: 8px;
+}
 /* Animación carrusel */
 @keyframes deslizar {
     0%   { transform: translateX(0); }
