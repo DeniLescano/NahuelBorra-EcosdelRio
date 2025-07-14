@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carrusel automático
   const carruselInner = document.querySelector('.carrusel-inner');
   let index = 0;
+  const totalSlides = carruselInner.children.length;
 
   setInterval(() => {
-    index = (index + 1) % 4; // cambia cada 4 imágenes
+    index = (index + 1) % totalSlides;
     carruselInner.style.transform = `translateX(-${index * 100}%)`;
   }, 4000); // cada 4 segundos
 
