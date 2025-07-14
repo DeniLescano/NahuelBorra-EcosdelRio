@@ -183,23 +183,28 @@ iframe {
 
 /* Contador */
 .contador-v2 {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #1e1e1e;
-    border-radius: 20px;
-    padding: 12px 24px;
-    margin: 20px auto;
-    max-width: 90%;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    gap: 6px;
-    text-align: center;
-    color: #ccc;
-    height: 10vh; 
-    white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  
+  height: 10vh;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #ccc;
+
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 12px;
 }
 
 .contador-v2 .icono {
