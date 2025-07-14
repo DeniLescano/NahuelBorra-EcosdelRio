@@ -184,7 +184,7 @@ iframe {
 /* Contador */
 .contador-v2 {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     background-color: #1e1e1e;
@@ -198,6 +198,8 @@ iframe {
     gap: 6px;
     text-align: center;
     color: #ccc;
+    height: 10vh; 
+    white-space: nowrap;
 }
 
 .contador-v2 .icono {
