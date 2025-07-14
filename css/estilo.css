@@ -324,9 +324,18 @@ ul li {
         text-align: center;
     }
 
-    .modal-contenido {
-        width: 85%;
-    }
+    .modal {
+    padding-top: 0; /* Quitamos el espacio innecesario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-contenido {
+    max-height: 90vh; /* Evita que exceda la altura visible */
+    overflow-y: auto; /* Habilita scroll si se necesita */
+    padding: 20px 10px;
+  }
 
     .contador-v2 {
         flex-direction: column;
