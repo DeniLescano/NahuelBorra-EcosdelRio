@@ -282,131 +282,132 @@ ul li {
 /* ------------------------- */
 /* RESPONSIVE ADAPTATIONS */
 /* ------------------------- */
-
 @media (max-width: 1024px) {
-    .layout {
-        padding: 0 16px;
-    }
+  .layout {
+    padding: 0 16px;
+  }
 
-    h1 {
-        font-size: 28px;
-    }
+  h1 {
+    font-size: 28px;
+  }
 
-    h3 {
-        font-size: 16px;
-    }
+  h3 {
+    font-size: 16px;
+  }
 
-    .banner {
-        max-width: 100%;
-        height: auto;
-    }
+  .banner {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .contador-v2 {
+    height: 10vh;
+  }
 }
 
 @media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
-        padding: 0 12px;
-    }
+  .layout {
+    flex-direction: column;
+    padding: 0 12px;
+  }
 
-    .contenedor,
-    .lateral {
-        max-width: 100%;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-    }
+  .contenedor,
+  .lateral {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
 
-    .lateral iframe {
-        width: 100%;
-    }
+  .lateral iframe {
+    width: 100%;
+  }
 
-    .redes {
-        justify-content: center;
-    }
+  .redes {
+    justify-content: center;
+  }
 
-    .botones {
-        text-align: center;
-    }
+  .botones {
+    text-align: center;
+  }
 
-    .modal {
-    padding-top: 0; /* Quitamos el espacio innecesario */
+  .modal {
+    padding-top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .modal-contenido {
-    max-height: 90vh; /* Evita que exceda la altura visible */
-    overflow-y: auto; /* Habilita scroll si se necesita */
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 20px 10px;
   }
 
-    .contador-v2 {
-        flex-direction: column;
-        font-size: 16px;
-        gap: 6px;
-    }
+  .contador-v2 {
+    flex-direction: column;
+    font-size: 16px;
+    gap: 6px;
+    height: 10vh;
+  }
 
-    .carrusel {
-        height: 30vh;
-    }
+  .carrusel {
+    height: 30vh;
+  }
 
-    .carrusel-inner img {
-        object-fit: contain;
-    }
+  .carrusel-inner img {
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 18px;
-    }
+  body {
+    font-size: 18px;
+  }
 
-    h1 {
-        font-size: 28px;
-    }
+  h1 {
+    font-size: 28px;
+  }
 
-    h3 {
-        font-size: 20px;
-    }
+  h3 {
+    font-size: 20px;
+  }
 
-    p {
-        font-size: 17px;
-    }
+  p {
+    font-size: 17px;
+  }
 
-    button {
-        width: 90%;
-        font-size: 16px;
-        padding: 16px 32px;
-    }
+  button {
+    width: 90%;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
 
-    .btn-whatsapp {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
+  .btn-whatsapp {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 
-    .redes {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
+  .redes {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    .modal-contenido {
-        width: 80%;
-    }
+  .modal-contenido {
+    width: 80%;
+  }
 
-    .carrusel {
-        height: 35vh;
-    }
+  .carrusel {
+    height: 35vh;
+  }
 
-    .contador-v2 {
-        padding: 10px;
-    }
+  .contador-v2 {
+    padding: 10px;
+    height: 10vh;
+  }
 
-    .contenedor,
-    .lateral {
-        padding: 16px 10px;
-    }
+  .contenedor,
+  .lateral {
+    padding: 16px 10px;
+  }
 }
-
-
-
