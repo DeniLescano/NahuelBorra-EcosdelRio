@@ -275,6 +275,10 @@ ul li {
     100% { transform: translateX(0); }
 }
 
+#modalTransferencia {
+  display: none !important;
+}
+
 /* ------------------------- */
 /* RESPONSIVE ADAPTATIONS */
 /* ------------------------- */
@@ -403,3 +407,8 @@ ul li {
         padding: 16px 10px;
     }
 }
+
+.modal {
+  display: none !important;
+}
+
