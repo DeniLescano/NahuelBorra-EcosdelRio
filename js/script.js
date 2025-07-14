@@ -1,67 +1,105 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Carrusel automático
-  const carruselInner = document.querySelector('.carrusel-inner');
-  const slides = carruselInner.querySelectorAll('img'); // o .slide si usás divs
-  const totalSlides = slides.length;
-  let index = 0;
+    
+    // --- Carrusel Infinito (Código Mejorado) ---
+    const carruselInner = document.querySelector('.carrusel-inner');
+    if (carruselInner) {
+        const originalSlides = carruselInner.querySelectorAll('img');
+        const slideCount = originalSlides.length;
+        
+        // 1. No hacer nada si no hay imágenes
+        if (slideCount > 0) {
+            // 2. Clonar todas las imágenes y añadirlas al final para el efecto de bucle
+            originalSlides.forEach(slide => {
+                const clone = slide.cloneNode(true);
+                carruselInner.appendChild(clone);
+            });
 
-  // Ajustar el ancho total del carrusel-inner
-  carruselInner.style.width = `${100 * totalSlides}%`;
+            let currentIndex = 0;
+            const intervalTime = 4000; // 4 segundos entre cada foto
 
-  // Asegurarse que cada slide ocupe el mismo ancho del carrusel
-  slides.forEach(slide => {
-    slide.style.width = `${100 / totalSlides}%`;
-    slide.style.flexShrink = '0';
-  });
+            const moveNext = () => {
+                currentIndex++;
+                // Mueve el carrusel hacia la izquierda
+                carruselInner.style.transform = `translateX(-${currentIndex * 100}vw)`;
+                
+                // 3. Lógica para el reinicio "mágico"
+                // Cuando llegamos al final de las imágenes originales (ahora estamos en los clones)
+                if (currentIndex >= slideCount) {
+                    // Esperamos a que la transición CSS termine (1s)
+                    setTimeout(() => {
+                        // Desactivamos la animación de transición
+                        carruselInner.style.transition = 'none';
+                        // Saltamos de vuelta al inicio sin que el usuario lo vea
+                        currentIndex = 0;
+                        carruselInner.style.transform = 'translateX(0)';
+                        
+                        // Forzamos al navegador a aplicar el cambio y LUEGO reactivamos la transición
+                        // para que el siguiente movimiento sea suave.
+                        setTimeout(() => {
+                            carruselInner.style.transition = 'transform 1s ease-in-out';
+                        }, 50); // Un pequeño retardo es suficiente
 
-  setInterval(() => {
-    index = (index + 1) % totalSlides;
-    carruselInner.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
-  }, 4000);
+                    }, 1000); // Este tiempo debe coincidir con la duración de la transición en tu CSS
+                }
+            };
 
-  // Modal
-  const modal = document.getElementById("modalTransferencia");
-  const btn = document.getElementById("btnAbrirModal");
-  const span = document.querySelector(".cerrar");
-
-  if (btn && modal && span) {
-    btn.onclick = () => {
-      modal.style.display = "block";
-    };
-
-    span.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    window.onclick = (event) => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  }
-
-  // Cuenta regresiva
-  const fechaObjetivo = new Date("2025-08-03T00:00:00");
-
-  function actualizarCuenta() {
-    const ahora = new Date();
-    const diferencia = fechaObjetivo - ahora;
-
-    if (diferencia <= 0) {
-      document.querySelector(".contador-v2").innerHTML = "¡El evento ya comenzó!";
-      clearInterval(intervalo);
-      return;
+            setInterval(moveNext, intervalTime);
+        }
     }
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    // --- Modal ---
+    const modal = document.getElementById("modalTransferencia");
+    const btn = document.getElementById("btnAbrirModal");
+    const span = document.querySelector(".cerrar");
 
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-  }
+    // Tu código del modal está perfecto, puedes dejarlo como está.
+    if (btn && modal && span) {
+        btn.onclick = () => {
+            // Pequeña corrección: usa 'flex' en lugar de 'block' para que el centrado vertical funcione mejor.
+            modal.style.display = "flex";
+        };
 
-  const intervalo = setInterval(actualizarCuenta, 1000);
-  actualizarCuenta();
+        span.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        window.onclick = (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    }
+
+    // --- Cuenta regresiva ---
+    // Tu código de la cuenta regresiva también está perfecto. Déjalo como está.
+    const fechaObjetivo = new Date("2025-08-03T00:00:00");
+
+    function actualizarCuenta() {
+        const ahora = new Date();
+        const diferencia = fechaObjetivo - ahora;
+
+        if (diferencia <= 0) {
+            const contadorElement = document.querySelector(".contador-v2");
+            if(contadorElement) {
+                contadorElement.innerHTML = "¡El evento ya comenzó!";
+            }
+            clearInterval(intervalo);
+            return;
+        }
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        
+        const diasEl = document.getElementById("dias");
+        const horasEl = document.getElementById("horas");
+        const minutosEl = document.getElementById("minutos");
+
+        if(diasEl) diasEl.textContent = dias;
+        if(horasEl) horasEl.textContent = horas;
+        if(minutosEl) minutosEl.textContent = minutos;
+    }
+
+    const intervalo = setInterval(actualizarCuenta, 1000);
+    actualizarCuenta();
 });
