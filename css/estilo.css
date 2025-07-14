@@ -206,7 +206,18 @@ iframe {
   box-sizing: border-box;
 }
 
+.contador-v2 span {
+  min-width: 0;
+  flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.contador-v2 .icono img {
+  width: clamp(16px, 4vw, 24px);
+  height: auto;
+  
 .contador-v2 .icono {
     font-size: 20px;
     color: #ff9800;
