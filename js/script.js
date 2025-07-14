@@ -1,13 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Carrusel automático
   const carruselInner = document.querySelector('.carrusel-inner');
+  const slides = carruselInner.querySelectorAll('img'); // o .slide si usás divs
+  const totalSlides = slides.length;
   let index = 0;
-  const totalSlides = carruselInner.children.length;
+
+  // Ajustar el ancho total del carrusel-inner
+  carruselInner.style.width = `${100 * totalSlides}%`;
+
+  // Asegurarse que cada slide ocupe el mismo ancho del carrusel
+  slides.forEach(slide => {
+    slide.style.width = `${100 / totalSlides}%`;
+    slide.style.flexShrink = '0';
+  });
 
   setInterval(() => {
     index = (index + 1) % totalSlides;
-    carruselInner.style.transform = `translateX(-${index * 100}%)`;
-  }, 4000); // cada 4 segundos
+    carruselInner.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
+  }, 4000);
 
   // Modal
   const modal = document.getElementById("modalTransferencia");
