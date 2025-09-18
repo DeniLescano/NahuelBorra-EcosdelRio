@@ -381,7 +381,89 @@ ul li {
         margin-top: 2px;
       }
 
+.book {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;  /* margen para separarlo de otros bloques */
+  perspective: 2000px;
+}
 
+.book input {
+  display: none;
+}
+
+.pages {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* mantiene proporción responsiva tipo álbum */
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 1s ease, z-index 0.5s ease;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+/* Flechas de navegación */
+.page label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+  z-index: 10;
+}
+.page label:hover {
+  background: rgba(0,0,0,0.7);
+}
+.prev { left: 12px; }
+.next { right: 12px; }
+
+/* Estados de páginas (flipbook en 3D) */
+#page1:checked ~ .pages .page1 { transform: rotateY(0deg); z-index: 3; }
+#page1:checked ~ .pages .page2,
+#page1:checked ~ .pages .page3 {
+  transform: rotateY(-180deg);
+  z-index: 1;
+}
+
+#page2:checked ~ .pages .page1 { transform: rotateY(-180deg); z-index: 1; }
+#page2:checked ~ .pages .page2 { transform: rotateY(0deg); z-index: 3; }
+#page2:checked ~ .pages .page3 { transform: rotateY(-180deg); z-index: 1; }
+
+#page3:checked ~ .pages .page1,
+#page3:checked ~ .pages .page2 { transform: rotateY(-180deg); z-index: 1; }
+#page3:checked ~ .pages .page3 { transform: rotateY(0deg); z-index: 3; }
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .book {
+    max-width: 95%;
+  }
+  .page label {
+    font-size: 1.5rem;
+    padding: 6px 10px;
+  }
+}
 /* ------------------------- */
 /* RESPONSIVE ADAPTATIONS */
 /* ------------------------- */
